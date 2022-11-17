@@ -1,0 +1,26 @@
+.song {
+  padding: 20px 0;
+}
+
+.song__display {
+  img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  text-align: center;
+}
+
+.song__name {
+  text-align: center;
+  margin-top: 30px;
+
+  h4 {
+    padding: 10px 0;
+  }
+
+  h6 {
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  color: #c94b15;
+  font-family: 'Press Start 2P', cursive;
+}
+
+@import './library';
+@import './song';
+@import './player';
+@import './fluctuate';
