@@ -1,7 +1,3 @@
-.song {
-  padding: 20px 0;
-}
-
 .song__display {
   img {
     width: 250px;
@@ -14,13 +10,21 @@
 
 .song__name {
   text-align: center;
-  margin-top: 30px;
-
+  padding-top: 90px;
   h4 {
-    padding: 10px 0;
+    padding: 5px 0;
+    font-size: 0.9rem;
   }
 
   h6 {
-    padding: 10px 0;
+    padding: 5px 0;
+    font-size: 0.6rem;
+  }
+}
+
+@media only screen and (max-width: 668px) {
+  .song {
+    padding-top: 50px;
+    margin-bottom: 20px;
   }
 }
