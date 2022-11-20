@@ -9,15 +9,8 @@ import useAuth from './api/useAuth';
 
 function App() {
   const [libraryStatus, setLibraryStatus] = useState(false);
-  const _token = useAuth();
-  console.log('the token is: ' + _token);
-
-  const spotifyApi = new SpotifyWebApi({
-    clientId: '74c723c7b3c741a1a2246433208896f9',
-    clientSecret: '20747220927a4d358de271326200d933'
-  });
-
-  useEffect(() => {}, []);
+  const accessToken = useAuth();
+  console.log('the token is: ' + accessToken);
 
   return (
     <div className="App">
@@ -25,6 +18,7 @@ function App() {
       <Library
         libraryStatus={libraryStatus}
         setLibraryStatus={setLibraryStatus}
+        accessToken={accessToken}
       />
       <Song />
       <Player />
