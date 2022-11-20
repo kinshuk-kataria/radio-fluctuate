@@ -46,17 +46,18 @@
   height: 100%;
   box-shadow: 2px 2px 30px rgb(204, 204, 204);
   overflow: scroll;
-  transition: all 0.5s ease;
+  transition: all 0.7s ease;
   transform: translate(100%);
   opacity: 0;
 
   h4 {
     padding: 1rem 2rem;
     color: #3e79c4;
+    background-color: #c94b15;
     cursor: pointer;
   }
   h4:hover {
-    background-color: #c94b15;
+    background-color: rgba($color: #c94b15, $alpha: 0.8);
   }
 
   &--active {
@@ -112,4 +113,10 @@
   width: 20px;
   height: 20px;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 668px) {
+  .library {
+    width: 100%;
+  }
 }
