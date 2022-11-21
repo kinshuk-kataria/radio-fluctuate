@@ -1,11 +1,28 @@
-.song__display {
-  img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+.song__cover {
   text-align: center;
+}
+
+.cover {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  &--spin {
+    animation-name: spin;
+    animation-duration: 100000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .song__name {

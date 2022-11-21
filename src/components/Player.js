@@ -59,7 +59,7 @@ function Player({
     let currentIndex = songs.findIndex(
       song => song.track.id === currentSong.id
     );
-    console.log(currentIndex);
+
     if (direction === 'skip-forward') {
       await setCurrentSong(songs[(currentIndex + 1) % songs.length].track);
       activeLibraryHandler(songs[(currentIndex + 1) % songs.length].track);
@@ -105,7 +105,7 @@ function Player({
         <img
           src={Play}
           width="30"
-          alt="Play Button"
+          alt="Play/pause Button"
           onClick={playSongHandler}
         />
         <img

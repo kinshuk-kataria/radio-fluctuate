@@ -52,9 +52,7 @@ function App() {
 
   const timeUpdateHandler = e => {
     const current = e.target.currentTime;
-    console.log();
     const duration = e.target.duration;
-    //Calculate Percentage
     const roundedCurrent = Math.round(current);
     const roundedDuration = Math.round(duration);
     const animation = Math.round((roundedCurrent / roundedDuration) * 100);
@@ -68,12 +66,22 @@ function App() {
   };
 
   const songEndHandler = async () => {
-    let currentIndex = songs.findIndex(song => song.id === currentSong.id);
-    await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
-    if (isPlaying) audioRef.current.play();
+    let currentIndex = songs.findIndex(
+      song => song.track.id === currentSong.id
+    );
+
+    await setCurrentSong(songs[(currentIndex + 1) % songs.length].track);
+
+    if (isPlaying)
+      audioRef.current
+        .play()
+        .then(() => {})
+        .catch(error => {
+          audioRef.current.play();
+        });
   };
 
-  console.log(currentSong);
+  console.log(songs);
 
   return (
     <div className="App">
@@ -95,11 +103,13 @@ function App() {
         setSongs={setSongs}
         songs={songs}
         playlist={playlist}
+        isPlaying={isPlaying}
       />
       <Player
         accessToken={accessToken}
         audioRef={audioRef}
         songInfo={songInfo}
+        setSongInfo={setSongInfo}
         songs={songs}
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
@@ -111,7 +121,7 @@ function App() {
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
         ref={audioRef}
-        src={currentSong ? currentSong.preview_url : ''}
+        src={currentSong?.preview_url}
         onEnded={songEndHandler}
       ></audio>
     </div>

@@ -1,13 +1,14 @@
 import React from 'react';
 import sample from '../assets/sample.jpg';
 
-function Song({ currentSong }) {
+function Song({ currentSong, isPlaying }) {
   return (
     <div className="song">
-      <div className="song__display">
+      <div className="song__cover">
         <img
           src={currentSong ? currentSong.album?.images[0]?.url : sample}
           alt="display"
+          className={`cover ${isPlaying ? 'cover--spin' : ''}`}
         ></img>
       </div>
       <div className="song__name">

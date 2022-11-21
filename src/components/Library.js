@@ -5,7 +5,6 @@ import { ReactComponent as Arrow } from '../assets/arrow.svg';
 function Library({
   libraryStatus,
   setLibraryStatus,
-
   setCurrentSong,
   songs,
   isPlaying,
