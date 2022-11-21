@@ -74,7 +74,8 @@
   border-top: 1px solid #3e79c4;
 
   img {
-    width: 25%;
+    width: 45px;
+    height: 45px;
   }
   &:hover {
     background: rgb(222, 222, 255);
@@ -113,6 +114,14 @@
   width: 20px;
   height: 20px;
   margin-left: 20px;
+}
+
+.selected {
+  background: rgb(165, 181, 228);
+}
+.active-library {
+  transform: translateX(0%);
+  opacity: 1;
 }
 
 @media screen and (max-width: 668px) {

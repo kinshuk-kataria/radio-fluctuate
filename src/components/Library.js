@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import LibrarySong from './LibrarySong';
 import { ReactComponent as Arrow } from '../assets/arrow.svg';
-import { spotifyApi } from '../api/spotify';
 
-function Library({ libraryStatus, setLibraryStatus, accessToken }) {
-  const [playlist, setPlaylist] = useState('');
-  console.log(playlist);
-  useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.setAccessToken(accessToken);
+function Library({
+  libraryStatus,
+  setLibraryStatus,
 
-    //cleanup
-  }, [accessToken]);
-
-  useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi
-      .getPlaylist('7qIQX7tf0qPLR5E8w1i338')
-      .then(data => {
-        setPlaylist(data.body.tracks);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, [accessToken]);
-
+  setCurrentSong,
+  songs,
+  isPlaying,
+  setSongs,
+  audioRef
+}) {
   return (
     <div className={`library ${libraryStatus ? 'library--active' : ''}`}>
       <h4 onClick={() => setLibraryStatus(!libraryStatus)}>
@@ -32,13 +19,20 @@ function Library({ libraryStatus, setLibraryStatus, accessToken }) {
         <Arrow className="library__arrow" />
       </h4>
 
-      {playlist
-        ? playlist.items.map(item => (
+      {songs
+        ? songs.map(song => (
             <LibrarySong
-              key={item.track.id}
-              trackName={item.track.name}
-              artistName={item.track.artists[0].name}
-              trackCover={item.track.album.images[0].url}
+              key={song.track.id}
+              trackName={song.track.name}
+              artistName={song.track.artists[0].name}
+              trackCover={song.track.album.images[0].url}
+              song={song}
+              id={song.track.id}
+              setCurrentSong={setCurrentSong}
+              songs={songs}
+              isPlaying={isPlaying}
+              setSongs={setSongs}
+              audioRef={audioRef}
             />
           ))
         : ''}

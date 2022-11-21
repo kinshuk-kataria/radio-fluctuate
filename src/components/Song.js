@@ -1,15 +1,18 @@
 import React from 'react';
 import sample from '../assets/sample.jpg';
 
-function Song() {
+function Song({ currentSong }) {
   return (
     <div className="song">
       <div className="song__display">
-        <img src={sample} alt="display"></img>
+        <img
+          src={currentSong ? currentSong.album?.images[0]?.url : sample}
+          alt="display"
+        ></img>
       </div>
       <div className="song__name">
-        <h4>Let you down</h4>
-        <h6>Dawid Padsiadle</h6>
+        <h4>{currentSong?.name}</h4>
+        <h6>{currentSong?.artists[0]?.name}</h6>
       </div>
     </div>
   );
