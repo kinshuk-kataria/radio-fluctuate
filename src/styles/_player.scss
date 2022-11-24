@@ -6,7 +6,7 @@
   align-items: center;
 
   p {
-    font-size: 8px;
+    font-size: 0.6rem;
     flex: 0;
     padding-right: 5px;
     padding-left: 5px;
@@ -28,6 +28,11 @@
   align-items: center;
   width: 18%;
   margin: 25px auto;
+  cursor: pointer;
+
+  img:hover {
+    fill: white;
+  }
 }
 
 .player__footer {
@@ -38,10 +43,16 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+  cursor: pointer;
+}
 
-  img {
-    margin: 0 15px;
-  }
+.player__volume {
+  margin-right: 10px;
+}
+
+.player__btn {
+  width: 30px;
+  filter: drop-shadow(3px 3px 7px rgba(42, 4, 255, 0.4));
 }
 
 input[type='range'] {

@@ -5,21 +5,28 @@
 }
 
 .nav__logo {
-  color: #cbce25;
+  display: inline-flex;
+  color: #3e79c4;
   font-size: 0.5 rem;
   padding: 8px 0;
+
+  img {
+    transform: rotate(90deg);
+    margin-right: 5px;
+  }
 }
 
 .nav__btn {
   background-color: hsl(0, 8%, 11%);
   color: #c94b15;
   padding: 8px 12px;
-  border: 1px solid #3e79c4;
-  font-family: 'Press Start 2P', cursive;
+  border: 1px solid #c94b15;
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
   cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 2px;
 
   h6 {
     margin-left: 6px;
@@ -40,14 +47,14 @@
 .library {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   width: 20rem;
   background: white;
   height: 100%;
   box-shadow: 2px 2px 30px rgb(204, 204, 204);
   overflow: scroll;
   transition: all 0.7s ease;
-  transform: translate(100%);
+  transform: translate(-100%);
   opacity: 0;
 
   h4 {

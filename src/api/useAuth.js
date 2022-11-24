@@ -9,8 +9,6 @@ function useAuth() {
       .post('http://localhost:3001/test')
       .then(response => setAccessToken(response.data.accessToken))
       .catch(error => console.log(error));
-
-    //cleanup
   }, []);
   return accessToken;
 }

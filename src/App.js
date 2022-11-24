@@ -2,11 +2,11 @@ import './styles/app.scss';
 import Player from './components/Player';
 import Song from './components/Song';
 import Library from './components/Library';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Nav from './components/Nav';
 import useAuth from './api/useAuth';
 import { spotifyApi } from './api/spotify';
-import { useRef } from 'react';
+import Fiber from './components/Fiber';
 
 function App() {
   const audioRef = useRef(null);
@@ -26,21 +26,18 @@ function App() {
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
-    //need cleanup
   }, [accessToken]);
 
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi
-      .getPlaylist('7qIQX7tf0qPLR5E8w1i338')
+      .getPlaylist('3EMmeF6F28zxhrVQGBMRUZ')
       .then(data => {
         setPlaylist(data.body.tracks);
       })
       .catch(error => {
         console.log(error);
       });
-
-    //need cleanup
   }, [accessToken]);
 
   useEffect(() => {
@@ -81,10 +78,9 @@ function App() {
         });
   };
 
-  console.log(songs);
-
   return (
-    <div className="App">
+    <div className="app">
+      <Fiber />
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Library
         libraryStatus={libraryStatus}
@@ -117,6 +113,7 @@ function App() {
         setSongs={setSongs}
         setIsPlaying={setIsPlaying}
       />
+
       <audio
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}

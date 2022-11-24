@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Press+Start+2P&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Wallpoet&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +8,21 @@
 body {
   background-color: #000000;
   color: #c94b15;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Audiowide', cursive;
+}
+
+.app {
+  height: 100vh;
+  width: 100%;
+}
+
+.fiber {
+  width: 100vw;
+  position: fixed;
+  top: 130px;
+  z-index: -1;
 }
 
 @import './library';
 @import './song';
 @import './player';
-@import './fluctuate';

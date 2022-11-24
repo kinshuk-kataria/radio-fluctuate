@@ -1,9 +1,9 @@
 import React from 'react';
-import Play from '../assets/play.svg';
-import Prev from '../assets/prev.svg';
-import Next from '../assets/next.svg';
-import Up from '../assets/up.svg';
-import Down from '../assets/down.svg';
+import { ReactComponent as Play } from '../assets/play.svg';
+import { ReactComponent as Prev } from '../assets/prev.svg';
+import { ReactComponent as Next } from '../assets/next.svg';
+import { ReactComponent as Pause } from '../assets/pause.svg';
+import { ReactComponent as Volume } from '../assets/volume.svg';
 
 function Player({
   accessToken,
@@ -79,6 +79,10 @@ function Player({
     }
   };
 
+  const volumeChangeHandler = e => {
+    audioRef.current.volume = e.target.value;
+  };
+
   if (!accessToken) return null;
   return (
     <div className="player">
@@ -96,29 +100,42 @@ function Player({
         <p>{songInfo.duration ? getTime(songInfo.duration) : '0:00'}</p>
       </div>
       <div className="player__main">
-        <img
-          src={Prev}
-          width="25"
-          alt="Previous Button"
+        <Prev
+          className="player__btn"
           onClick={() => skipTrackHandler('skip-back')}
         />
-        <img
-          src={Play}
-          width="30"
-          alt="Play/pause Button"
-          onClick={playSongHandler}
-        />
-        <img
-          src={Next}
-          alt="Next button"
-          width="25"
+
+        {isPlaying ? (
+          <Pause
+            width="30"
+            height="30"
+            className="player__btn"
+            onClick={playSongHandler}
+          />
+        ) : (
+          <Play
+            width="30"
+            height="30"
+            className="player__btn"
+            onClick={playSongHandler}
+          />
+        )}
+
+        <Next
+          className="player__btn"
           onClick={() => skipTrackHandler('skip-forward')}
         />
       </div>
       <div className="player__footer">
-        <img src={Up} width="15" alt="volume up" />
-        <input type="range" />
-        <img src={Down} width="15" alt="volume down" />
+        <Volume width="20" className="player__volume" />
+        <input
+          id="volume"
+          min={0}
+          max={1}
+          step={0.1}
+          type="range"
+          onChange={volumeChangeHandler}
+        />
       </div>
     </div>
   );
