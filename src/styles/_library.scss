@@ -56,12 +56,16 @@
   transition: all 0.7s ease;
   transform: translate(-100%);
   opacity: 0;
+  z-index: 999;
 
   h4 {
     padding: 1rem 2rem;
     color: #3e79c4;
     background-color: #c94b15;
     cursor: pointer;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
   }
   h4:hover {
     background-color: rgba($color: #c94b15, $alpha: 0.8);

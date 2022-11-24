@@ -134,7 +134,7 @@ function Player({
           max={1}
           step={0.1}
           type="range"
-          onChange={volumeChangeHandler}
+          onChange={e => volumeChangeHandler}
         />
       </div>
     </div>
