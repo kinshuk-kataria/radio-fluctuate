@@ -9,7 +9,8 @@ function Library({
   songs,
   isPlaying,
   setSongs,
-  audioRef
+  audioRef,
+  setIsPlaying
 }) {
   return (
     <div className={`library ${libraryStatus ? 'library--active' : ''}`}>
@@ -21,17 +22,18 @@ function Library({
       {songs
         ? songs.map(song => (
             <LibrarySong
-              key={song.track.id}
-              trackName={song.track.name}
-              artistName={song.track.artists[0].name}
-              trackCover={song.track.album.images[0].url}
+              key={song.id}
+              trackName={song.name}
+              artistName={song.artists[0].name}
+              trackCover={song.album.images[0].url}
               song={song}
-              id={song.track.id}
+              id={song.id}
               setCurrentSong={setCurrentSong}
               songs={songs}
               isPlaying={isPlaying}
               setSongs={setSongs}
               audioRef={audioRef}
+              setIsPlaying={setIsPlaying}
             />
           ))
         : ''}

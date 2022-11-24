@@ -16,8 +16,7 @@ function App() {
   const [playlist, setPlaylist] = useState('');
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
-    duration: 0,
-    animationPercentage: 0
+    duration: 0
   });
   const [songs, setSongs] = useState([]);
 
@@ -42,32 +41,30 @@ function App() {
 
   useEffect(() => {
     if (playlist) {
-      setSongs(playlist.items);
-      setCurrentSong(playlist.items[0].track);
+      let songs = playlist.items
+        .filter(song => song.track.preview_url !== null)
+        .map(song => song.track);
+
+      setSongs(songs);
+      setCurrentSong(songs[4]);
     }
   }, [playlist]);
 
   const timeUpdateHandler = e => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
-    const roundedCurrent = Math.round(current);
-    const roundedDuration = Math.round(duration);
-    const animation = Math.round((roundedCurrent / roundedDuration) * 100);
 
     setSongInfo({
       ...songInfo,
       currentTime: current,
-      duration,
-      animationPercentage: animation
+      duration
     });
   };
 
   const songEndHandler = async () => {
-    let currentIndex = songs.findIndex(
-      song => song.track.id === currentSong.id
-    );
+    let currentIndex = songs.findIndex(song => song.id === currentSong.id);
 
-    await setCurrentSong(songs[(currentIndex + 1) % songs.length].track);
+    await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
 
     if (isPlaying)
       audioRef.current
@@ -77,6 +74,8 @@ function App() {
           audioRef.current.play();
         });
   };
+
+  console.log(isPlaying);
 
   return (
     <div className="app">
@@ -93,14 +92,7 @@ function App() {
         setSongs={setSongs}
         isPlaying={isPlaying}
       />
-      <Song
-        currentSong={currentSong}
-        setCurrentSong={setCurrentSong}
-        setSongs={setSongs}
-        songs={songs}
-        playlist={playlist}
-        isPlaying={isPlaying}
-      />
+      <Song currentSong={currentSong} isPlaying={isPlaying} />
       <Player
         accessToken={accessToken}
         audioRef={audioRef}

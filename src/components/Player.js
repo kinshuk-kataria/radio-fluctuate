@@ -6,7 +6,6 @@ import { ReactComponent as Pause } from '../assets/pause.svg';
 import { ReactComponent as Volume } from '../assets/volume.svg';
 
 function Player({
-  accessToken,
   songInfo,
   setSongInfo,
   audioRef,
@@ -25,7 +24,7 @@ function Player({
 
   const activeLibraryHandler = nextPrev => {
     const newSongs = songs.map(song => {
-      if (song.track.id === nextPrev.id) {
+      if (song.id === nextPrev.id) {
         return {
           ...song,
           active: true
@@ -56,23 +55,21 @@ function Player({
   };
 
   const skipTrackHandler = async direction => {
-    let currentIndex = songs.findIndex(
-      song => song.track.id === currentSong.id
-    );
+    let currentIndex = songs.findIndex(song => song.id === currentSong.id);
 
     if (direction === 'skip-forward') {
-      await setCurrentSong(songs[(currentIndex + 1) % songs.length].track);
-      activeLibraryHandler(songs[(currentIndex + 1) % songs.length].track);
+      await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
     }
     if (direction === 'skip-back') {
       if ((currentIndex - 1) % songs.length === -1) {
-        await setCurrentSong(songs[songs.length - 1].track);
-        activeLibraryHandler(songs[songs.length - 1].track);
+        await setCurrentSong(songs[songs.length - 1]);
+        activeLibraryHandler(songs[songs.length - 1]);
         if (isPlaying) audioRef.current.play();
         return;
       }
-      await setCurrentSong(songs[(currentIndex - 1) % songs.length].track);
-      activeLibraryHandler(songs[(currentIndex - 1) % songs.length].track);
+      await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+      activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
     }
     if (isPlaying) {
       audioRef.current.play();
@@ -83,7 +80,6 @@ function Player({
     audioRef.current.volume = e.target.value;
   };
 
-  if (!accessToken) return null;
   return (
     <div className="player">
       <div className="player__header">
@@ -134,7 +130,7 @@ function Player({
           max={1}
           step={0.1}
           type="range"
-          onChange={e => volumeChangeHandler}
+          onChange={volumeChangeHandler}
         />
       </div>
     </div>
