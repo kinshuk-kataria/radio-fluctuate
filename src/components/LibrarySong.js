@@ -11,7 +11,8 @@ function LibrarySong({
   isPlaying,
   setSongs,
   audioRef,
-  setIsPlaying
+  setLibraryStatus,
+  libraryStatus
 }) {
   const songSelectHandler = async () => {
     await setCurrentSong(song);
@@ -41,7 +42,10 @@ function LibrarySong({
       onClick={songSelectHandler}
     >
       <img src={trackCover} alt="song cover" />
-      <div className="librarySong_info">
+      <div
+        className="librarySong_info"
+        onClick={() => setLibraryStatus(!libraryStatus)}
+      >
         <h5>{trackName}</h5>
         <h6>{artistName}</h6>
       </div>

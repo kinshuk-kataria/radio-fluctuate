@@ -75,8 +75,6 @@ function App() {
         });
   };
 
-  console.log(isPlaying);
-
   return (
     <div className="app">
       <Fiber />

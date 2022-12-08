@@ -34,6 +34,8 @@ function Library({
               setSongs={setSongs}
               audioRef={audioRef}
               setIsPlaying={setIsPlaying}
+              setLibraryStatus={setLibraryStatus}
+              libraryStatus={libraryStatus}
             />
           ))
         : ''}

@@ -18,8 +18,6 @@
 }
 
 .nav__btn {
-  background-color: hsl(0, 8%, 11%);
-  color: #c94b15;
   padding: 8px 12px;
   border: 1px solid #c94b15;
   display: flex;
@@ -61,15 +59,15 @@
 
   h4 {
     padding: 1rem 2rem;
-    color: #3e79c4;
-    background-color: #c94b15;
+    color: #000000;
+    background-color: #655ceb;
     cursor: pointer;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
   }
   h4:hover {
-    background-color: rgba($color: #c94b15, $alpha: 0.8);
+    background-color: rgba($color: #c76d46, $alpha: 0.8);
   }
 
   &--active {
@@ -111,7 +109,7 @@
   scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }
 *::-webkit-scrollbar {
-  width: 5px;
+  display: none;
 }
 *::-webkit-scrollbar-track {
   background: transparent;

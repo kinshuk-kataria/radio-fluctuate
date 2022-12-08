@@ -6,7 +6,7 @@ function useAuth() {
 
   useEffect(() => {
     axios
-      .post('/token')
+      .post('http://localhost:3001/token')
       .then(response => setAccessToken(response.data.accessToken))
       .catch(error => console.log(error));
   }, []);
