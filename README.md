@@ -5,10 +5,14 @@ The objective of this project is to build an automated system in which songs are
 
 
 # Project Details
-Frontend: React\
-Backend: ExpressJS\
-Data Fetching: Axios\
-API: Spotify
+<ul>
+<li>Frontend: React</li>
+<li>Backend:Node.js, Express.js</li>
+<li>Data Fetching: Axios</li>
+<li>API: Spotify</li>
+</ul>
+
+
 
 # Some details about API
 ### OAuth flow used: Client Credentials Flow
