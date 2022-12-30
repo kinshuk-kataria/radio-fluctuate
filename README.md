@@ -18,6 +18,11 @@ The objective of this project is to build an automated system in which songs are
 ### OAuth flow used: Client Credentials Flow
 The Client Credentials flow is used in server-to-server authentication. Since this flow does not include authorization, only endpoints that do not access user information can be accessed.
 
+## UI
+<img width="1440" alt="fluctuate" src="https://user-images.githubusercontent.com/103840688/210045208-fb1314c8-90f1-45b9-9ffc-2fb4ae85ecbf.png">
+
+
+The Client Credentials flow is used in server-to-server authentication. Since this flow does not include authorization, only endpoints that do not access user information can be accessed.
 The following diagram shows how the Client Credentials Flow works:
 
 
