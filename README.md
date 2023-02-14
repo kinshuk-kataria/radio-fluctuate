@@ -1,7 +1,7 @@
 ### https://radio-fluctuate-kinshuk-kataria.vercel.app/
 # Objective:
 
-The objective of this project is to build an automated system in which songs are accessed directly from Spotify without user authentication or invlovement of user information.
+The objective of this project is to build an automated system in which songs are accessed directly from Spotify without user authentication or  involvement of user information.
 
 
 # Project Details
